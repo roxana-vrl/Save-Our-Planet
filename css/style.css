@@ -1,0 +1,1332 @@
+/* ==================================================
+   GENERAL
+   ================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+
+    margin: 0;
+
+    width: 100%;
+    height: 100%;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    background-color: #111;
+
+    overflow: hidden;
+}
+
+
+
+/* ==================================================
+   SCREENS
+   ================================================== */
+
+.screen {
+
+    display: none;
+
+    position: relative;
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+
+.screen.active {
+
+    display: block;
+}
+
+
+
+/* ==================================================
+   BACKGROUNDS
+   ================================================== */
+
+.level {
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+}
+
+
+.level1-bg {
+
+    background-image:
+        url("../images/level1_background.png");
+}
+
+
+.level2-bg {
+
+    background-image:
+        url("../images/level2_background.png");
+}
+
+
+.level3-bg {
+
+    background-image:
+        url("../images/level3_background.png");
+}
+
+
+.level4-bg {
+
+    background-image:
+        url("../images/level4_background.png");
+}
+
+
+
+/* ==================================================
+   HUD
+   ================================================== */
+
+.hud {
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    width: 82%;
+    height: 42px;
+
+    display: flex;
+
+    justify-content: space-around;
+    align-items: center;
+
+    background-color:
+        rgba(7, 24, 36, 0.82);
+
+    border:
+        3px solid white;
+
+    color: white;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    text-shadow:
+        2px 2px 2px black;
+
+    z-index: 1000;
+}
+
+
+
+/* ==================================================
+   LEVEL TITLE
+   ================================================== */
+
+.level-title {
+
+    position: absolute;
+
+    top: 52px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    min-width: 330px;
+
+    padding:
+        7px 22px;
+
+    text-align: center;
+
+    color: white;
+
+    background-color:
+        rgba(4, 20, 30, 0.84);
+
+    border:
+        2px solid
+        rgba(255, 255, 255, 0.35);
+
+    z-index: 900;
+}
+
+
+.level-title h2 {
+
+    margin: 0;
+
+    color: #ffe33e;
+
+    font-size: 22px;
+}
+
+
+.level-title p {
+
+    margin:
+        4px 0 0 0;
+
+    font-size: 13px;
+}
+
+
+
+/* ==================================================
+   MESSAGE
+   ================================================== */
+
+.game-message {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 5px;
+
+    transform:
+        translateX(-50%);
+
+    min-width: 300px;
+
+    padding:
+        7px 20px;
+
+    text-align: center;
+
+    color: white;
+
+    background-color:
+        rgba(0, 0, 0, 0.82);
+
+    font-size: 17px;
+    font-weight: bold;
+
+    z-index: 1200;
+}
+
+
+
+/* ==================================================
+   PLAYER SETUP BACKGROUND
+   ================================================== */
+
+#homeScreen {
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.30),
+            rgba(0, 0, 0, 0.30)
+        ),
+        url("../images/level1_background.png");
+
+    background-size: cover;
+
+    background-position: center;
+}
+
+
+
+/* ==================================================
+   PLAYER SETUP
+   ================================================== */
+
+.player-setup {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: 620px;
+
+    max-width: 92%;
+
+    padding:
+        25px 35px;
+
+    text-align: center;
+
+    color: white;
+
+    background-color:
+        rgba(15, 45, 30, 0.95);
+
+    border:
+        6px solid #f5d34e;
+
+    box-shadow:
+        0 10px 0
+        rgba(0, 0, 0, 0.75);
+}
+
+
+.player-setup h1 {
+
+    margin: 0;
+
+    color: #f5d34e;
+
+    font-size: 52px;
+
+    text-shadow:
+        3px 3px 0 #222;
+}
+
+
+.player-setup h2 {
+
+    margin:
+        5px 0 8px 0;
+
+    color: #7ae66b;
+}
+
+
+.welcome-text {
+
+    margin:
+        5px 0 18px 0;
+
+    font-size: 16px;
+}
+
+
+
+/* ==================================================
+   NAME
+   ================================================== */
+
+.name-section {
+
+    margin-bottom: 15px;
+}
+
+
+.name-section label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #f5d34e;
+
+    font-size: 17px;
+
+    font-weight: bold;
+}
+
+
+#playerName {
+
+    width: 280px;
+
+    max-width: 90%;
+
+    padding: 12px;
+
+    border:
+        4px solid white;
+
+    outline: none;
+
+    text-align: center;
+
+    font-size: 19px;
+
+    font-weight: bold;
+
+    color: #222;
+
+    background-color: white;
+}
+
+
+#playerName:focus {
+
+    border-color:
+        #f5d34e;
+}
+
+
+
+/* ==================================================
+   AVATAR
+   ================================================== */
+
+.player-setup h3 {
+
+    margin:
+        12px 0 8px 0;
+
+    color: #f5d34e;
+}
+
+
+.avatar-selection {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 35px;
+
+    margin-bottom: 10px;
+}
+
+
+.avatar-card {
+
+    width: 145px;
+    height: 165px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 5px;
+
+    border:
+        5px solid
+        rgba(255, 255, 255, 0.45);
+
+    background-color:
+        rgba(255, 255, 255, 0.08);
+
+    cursor: pointer;
+
+    transition:
+        0.2s;
+}
+
+
+.avatar-card img {
+
+    width: 130px;
+    height: 150px;
+
+    object-fit: contain;
+
+    pointer-events: none;
+}
+
+
+.avatar-card:hover {
+
+    transform:
+        scale(1.05);
+
+    border-color: white;
+}
+
+
+.avatar-card.selected {
+
+    border-color:
+        #ffe33e;
+
+    background-color:
+        rgba(255, 227, 62, 0.22);
+
+    transform:
+        scale(1.08);
+
+    box-shadow:
+        0 0 20px
+        rgba(255, 227, 62, 0.8);
+}
+
+
+#playerError {
+
+    min-height: 22px;
+
+    margin:
+        7px 0;
+
+    color: #ff7373;
+
+    font-size: 16px;
+
+    font-weight: bold;
+}
+
+
+
+/* ==================================================
+   BUTTONS
+   ================================================== */
+
+button {
+
+    padding:
+        15px 30px;
+
+    border:
+        4px solid white;
+
+    background-color:
+        #45a43c;
+
+    color: white;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 0 #1d5a19;
+}
+
+
+button:hover {
+
+    background-color:
+        #63c958;
+}
+
+
+
+/* ==================================================
+   LEVEL 1 - BINS
+   Keep all bins together on the pavement
+   ================================================== */
+
+.bin {
+    position: absolute;
+
+    top: 40%;
+
+    width: 170px;
+    height: 180px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: flex-end;
+    align-items: center;
+
+    text-align: center;
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    text-shadow:
+        2px 2px 3px black;
+
+    z-index: 500;
+}
+
+
+.bin img {
+    width: 155px;
+    height: 150px;
+
+    object-fit: contain;
+
+    display: block;
+
+    filter:
+        drop-shadow(
+            0 7px 5px
+            rgba(0, 0, 0, 0.65)
+        );
+}
+
+
+.bin span {
+    padding: 3px 10px;
+
+    background-color:
+        rgba(0, 0, 0, 0.85);
+
+    border-radius: 4px;
+}
+
+
+/* Black - General */
+
+#generalBin {
+    left: 27%;
+}
+
+
+/* Brown - Food */
+
+#foodBin {
+    left: 39%;
+}
+
+
+/* Blue - Paper */
+
+#paperBin {
+    left: 51%;
+}
+
+
+/* Blue/Green - Recycling */
+
+#recyclingBin {
+    left: 63%;
+}
+
+
+/* ==================================================
+   LEVEL 1
+   RUBBISH
+   ================================================== */
+
+.rubbish {
+
+    position: absolute;
+
+    width: 105px;
+    height: 105px;
+
+    object-fit: contain;
+
+    cursor: grab;
+
+    filter:
+        drop-shadow(
+            0 5px 4px
+            rgba(0, 0, 0, 0.55)
+        );
+
+    z-index: 400;
+}
+
+
+
+/* ==================================================
+   LEVEL 2
+   ================================================== */
+
+.ocean-object {
+
+    position: absolute;
+
+    width: 115px;
+    height: 115px;
+
+    object-fit: contain;
+
+    cursor: grab;
+
+    filter:
+        drop-shadow(
+            0 5px 4px
+            rgba(0, 0, 0, 0.55)
+        );
+
+    z-index: 300;
+}
+
+
+#oceanBin {
+
+    position: absolute;
+
+    right: 5%;
+    bottom: 12%;
+
+    width: 210px;
+    height: 160px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    border:
+        5px dashed white;
+
+    background-color:
+        rgba(0, 92, 130, 0.86);
+
+    color: white;
+
+    font-size: 19px;
+    font-weight: bold;
+
+    text-shadow:
+        2px 2px 2px black;
+
+    z-index: 200;
+}
+
+
+.recycle-symbol {
+
+    font-size: 40px;
+
+    margin-bottom: 4px;
+}
+
+
+.level-progress {
+
+    position: absolute;
+
+    left: 15px;
+    bottom: 15px;
+
+    padding:
+        10px 15px;
+
+    color: white;
+
+    background-color:
+        rgba(0, 0, 0, 0.82);
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    z-index: 500;
+}
+
+
+
+/* ==================================================
+   LEVEL 3
+   ================================================== */
+
+.repair-zone {
+
+    position: absolute;
+
+    width: 220px;
+    height: 200px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 200;
+}
+
+
+.repair-zone img {
+
+    width: 205px;
+    height: 190px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 7px 6px
+            rgba(0, 0, 0, 0.60)
+        );
+}
+
+
+#treeZone {
+
+    left: 11%;
+    top: 59%;
+}
+
+
+#waterZone {
+
+    left: 44%;
+    top: 48%;
+}
+
+
+#nestZone {
+
+    right: 6%;
+    top: 27%;
+}
+
+
+#flowerZone {
+
+    right: 18%;
+    top: 62%;
+}
+
+
+
+/* ==================================================
+   LEVEL 3 INVENTORY
+   ================================================== */
+
+.inventory-panel {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 8px;
+
+    transform:
+        translateX(-50%);
+
+    padding:
+        5px 18px 8px 18px;
+
+    background-color:
+        rgba(7, 25, 12, 0.90);
+
+    border:
+        3px solid white;
+
+    z-index: 700;
+}
+
+
+.inventory-title {
+
+    margin-bottom: 4px;
+
+    color: white;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+
+.inventory-items {
+
+    display: flex;
+
+    gap: 20px;
+
+    align-items: center;
+}
+
+
+.repair-item {
+
+    width: 120px;
+    height: 105px;
+
+    object-fit: contain;
+
+    cursor: grab;
+
+    filter:
+        drop-shadow(
+            0 5px 4px
+            rgba(0, 0, 0, 0.60)
+        );
+}
+
+
+
+/* ==================================================
+   LEVEL 4
+   ================================================== */
+
+.city-zone {
+
+    position: absolute;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border:
+        4px dashed
+        rgba(255, 255, 255, 0.90);
+
+    background-color:
+        rgba(0, 0, 0, 0.10);
+
+    z-index: 150;
+}
+
+
+.city-zone span {
+
+    padding:
+        4px 8px;
+
+    color: white;
+
+    background-color:
+        rgba(0, 0, 0, 0.72);
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    text-shadow:
+        2px 2px 2px black;
+}
+
+
+/* Tree plot */
+
+#treeCityZone {
+
+    left: 19%;
+    top: 46%;
+
+    width: 230px;
+    height: 130px;
+}
+
+
+/* Garden plot */
+
+#gardenCityZone {
+
+    left: 34%;
+    top: 62%;
+
+    width: 250px;
+    height: 135px;
+}
+
+
+/* Solar house plot */
+
+#solarCityZone {
+
+    right: 23%;
+    top: 73%;
+
+    width: 250px;
+    height: 130px;
+}
+
+
+/* Bike lane */
+
+#bikeCityZone {
+
+    left: 50%;
+    top: 49%;
+
+    width: 190px;
+    height: 90px;
+}
+
+
+/* Road */
+
+#busCityZone {
+
+    right: 23%;
+    top: 37%;
+
+    width: 210px;
+    height: 95px;
+}
+
+
+/* Recycling area */
+
+#recyclingCityZone {
+
+    right: 4%;
+    top: 34%;
+
+    width: 180px;
+    height: 125px;
+}
+
+
+
+/* ==================================================
+   LEVEL 4 INVENTORY
+   ================================================== */
+
+.city-inventory {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 5px;
+
+    transform:
+        translateX(-50%);
+
+    padding:
+        5px 18px 8px 18px;
+
+    background-color:
+        rgba(7, 25, 12, 0.92);
+
+    border:
+        3px solid white;
+
+    z-index: 800;
+}
+
+
+.city-items {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 17px;
+}
+
+
+.city-item {
+
+    width: 95px;
+    height: 85px;
+
+    object-fit: contain;
+
+    cursor: grab;
+
+    filter:
+        drop-shadow(
+            0 5px 4px
+            rgba(0, 0, 0, 0.60)
+        );
+}
+
+
+
+/* ==================================================
+   DROP HIGHLIGHT
+   ================================================== */
+
+.drop-hover {
+
+    border-color:
+        #ffe33e !important;
+
+    background-color:
+        rgba(
+            255,
+            227,
+            62,
+            0.28
+        ) !important;
+}
+
+
+
+/* ==================================================
+   CORRECT ANIMATION
+   ================================================== */
+
+.correct-animation {
+
+    animation:
+        correctAnimation
+        0.55s;
+}
+
+
+@keyframes correctAnimation {
+
+    0% {
+
+        transform:
+            scale(1);
+    }
+
+
+    50% {
+
+        transform:
+            scale(1.18);
+    }
+
+
+    100% {
+
+        transform:
+            scale(1);
+    }
+}
+
+
+
+/* ==================================================
+   RESULTS
+   ================================================== */
+
+#resultsScreen {
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.30),
+            rgba(0, 0, 0, 0.30)
+        ),
+        url("../images/level4_background.png");
+
+    background-size: cover;
+
+    background-position: center;
+}
+
+
+.results-box {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: 650px;
+
+    max-width: 94%;
+
+    padding:
+        20px 30px;
+
+    text-align: center;
+
+    color: white;
+
+    background-color:
+        rgba(15, 45, 30, 0.95);
+
+    border:
+        6px solid #f5d34e;
+
+    box-shadow:
+        0 10px 0
+        rgba(0, 0, 0, 0.75);
+}
+
+
+.results-box h1 {
+
+    margin: 0;
+
+    color: #f5d34e;
+
+    font-size: 42px;
+
+    text-shadow:
+        3px 3px 0 #222;
+}
+
+
+.results-box h2 {
+
+    margin:
+        7px 0;
+
+    color: white;
+}
+
+
+
+/* ==================================================
+   RESULT AVATAR
+   ================================================== */
+
+.result-avatar-box {
+
+    width: 135px;
+    height: 145px;
+
+    margin:
+        5px auto;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color:
+        rgba(255, 255, 255, 0.10);
+
+    border:
+        4px solid #f5d34e;
+}
+
+
+#resultAvatar {
+
+    width: 125px;
+    height: 135px;
+
+    object-fit: contain;
+}
+
+
+
+/* ==================================================
+   TROPHY
+   ================================================== */
+
+.trophy {
+
+    margin-top: 4px;
+
+    font-size: 60px;
+
+    line-height: 1;
+}
+
+
+#trophyTitle {
+
+    color: #f5d34e;
+}
+
+
+
+/* ==================================================
+   RESULT STATS
+   ================================================== */
+
+.result-stats {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin:
+        12px 0;
+}
+
+
+.result-stat {
+
+    width: 165px;
+
+    padding: 9px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background-color:
+        rgba(0, 0, 0, 0.35);
+
+    border:
+        3px solid white;
+}
+
+
+.stat-icon {
+
+    font-size: 26px;
+}
+
+
+.stat-title {
+
+    margin-top: 3px;
+
+    color: #f5d34e;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+
+.stat-number {
+
+    margin-top: 3px;
+
+    font-size: 22px;
+
+    font-weight: bold;
+}
+
+
+
+/* ==================================================
+   RESPONSIVE
+   ================================================== */
+
+@media screen and (max-width: 900px) {
+
+    .hud {
+
+        width: 96%;
+
+        font-size: 13px;
+    }
+
+
+    .level-title {
+
+        transform:
+            translateX(-50%)
+            scale(0.85);
+    }
+
+
+    .bin {
+
+        transform:
+            scale(0.75);
+    }
+
+
+    .rubbish,
+    .ocean-object {
+
+        width: 75px;
+        height: 75px;
+    }
+
+
+    .inventory-panel,
+    .city-inventory {
+
+        transform:
+            translateX(-50%)
+            scale(0.75);
+
+        transform-origin:
+            bottom center;
+    }
+
+
+    .result-stats {
+
+        gap: 5px;
+    }
+
+
+    .result-stat {
+
+        width: 130px;
+    }
+}

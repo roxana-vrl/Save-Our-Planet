@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>EcoQuest</title>
+
+    <!-- jQuery UI CSS -->
+    <link rel="stylesheet"
+          href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+    <!-- My CSS -->
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body>
+
+
+<!-- ==================================================
+     PLAYER SETUP
+     ================================================== -->
+
+<section id="homeScreen"
+         class="screen active">
+
+    <div class="player-setup">
+
+        <h1>ECOQUEST</h1>
+
+        <h2>Save the Block World!</h2>
+
+        <p class="welcome-text">
+            Get ready for your environmental adventure!
+        </p>
+
+
+        <div class="name-section">
+
+            <label for="playerName">
+                WHAT IS YOUR NAME?
+            </label>
+
+            <input type="text"
+                   id="playerName"
+                   maxlength="12"
+                   placeholder="Enter your name">
+
+        </div>
+
+
+        <h3>CHOOSE YOUR AVATAR</h3>
+
+
+        <div class="avatar-selection">
+
+            <div class="avatar-card"
+                 id="avatar1Card"
+                 onclick="selectAvatar('avatar1')">
+
+                <img src="images/avatar1.png"
+                     alt="Avatar 1">
+
+            </div>
+
+
+            <div class="avatar-card"
+                 id="avatar2Card"
+                 onclick="selectAvatar('avatar2')">
+
+                <img src="images/avatar2.png"
+                     alt="Avatar 2">
+
+            </div>
+
+        </div>
+
+
+        <p id="playerError"></p>
+
+
+        <button onclick="startGame()">
+            START GAME
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     LEVEL 1
+     CLEAN THE PARK
+     ================================================== -->
+
+<section id="level1"
+         class="screen level level1-bg">
+
+
+    <div class="hud">
+
+        <span>LEVEL 1</span>
+
+        <span>
+            ❤️ <span class="lives">3</span>
+        </span>
+
+        <span>
+            SCORE:
+            <span class="score">0</span>
+        </span>
+
+        <span>
+            TIME:
+            <span class="time">0</span>s
+        </span>
+
+    </div>
+
+
+    <div class="level-title">
+
+        <h2>Clean the Park</h2>
+
+        <p>
+            Drag each piece of rubbish
+            into the correct bin.
+        </p>
+
+    </div>
+
+
+    <!-- GENERAL BIN -->
+
+    <div id="generalBin"
+         class="bin"
+         data-type="general">
+
+        <img src="images/bin_general.png"
+             alt="General bin">
+
+        <span>GENERAL</span>
+
+    </div>
+
+
+    <!-- FOOD BIN -->
+
+    <div id="foodBin"
+         class="bin"
+         data-type="food">
+
+        <img src="images/bin_food.png"
+             alt="Food bin">
+
+        <span>FOOD</span>
+
+    </div>
+
+
+    <!-- PAPER BIN -->
+
+    <div id="paperBin"
+         class="bin"
+         data-type="paper">
+
+        <img src="images/bin_paper.png"
+             alt="Paper bin">
+
+        <span>PAPER</span>
+
+    </div>
+
+
+    <!-- RECYCLING BIN -->
+
+    <div id="recyclingBin"
+         class="bin"
+         data-type="recycling">
+
+        <img src="images/bin_glass_plastic.png"
+             alt="Recycling bin">
+
+        <span>RECYCLING</span>
+
+    </div>
+
+
+    <!-- RUBBISH -->
+
+    <img src="images/apple_core.png"
+         class="rubbish"
+         data-type="food"
+         alt="Apple core">
+
+
+    <img src="images/hamburger.png"
+         class="rubbish"
+         data-type="food"
+         alt="Hamburger">
+
+
+    <img src="images/newspaper.png"
+         class="rubbish"
+         data-type="paper"
+         alt="Newspaper">
+
+
+    <img src="images/cardboard_box.png"
+         class="rubbish"
+         data-type="paper"
+         alt="Cardboard box">
+
+
+    <img src="images/glass_bottle.png"
+         class="rubbish"
+         data-type="recycling"
+         alt="Glass bottle">
+
+
+    <img src="images/plastic_bottle.png"
+         class="rubbish"
+         data-type="recycling"
+         alt="Plastic bottle">
+
+
+    <img src="images/crisps_bag.png"
+         class="rubbish"
+         data-type="general"
+         alt="Crisps bag">
+
+
+    <div class="game-message"></div>
+
+</section>
+
+
+
+<!-- ==================================================
+     LEVEL 2
+     CLEAN THE OCEAN
+     ================================================== -->
+
+<section id="level2"
+         class="screen level level2-bg">
+
+
+    <div class="hud">
+
+        <span>LEVEL 2</span>
+
+        <span>
+            ❤️ <span class="lives">3</span>
+        </span>
+
+        <span>
+            SCORE:
+            <span class="score">0</span>
+        </span>
+
+        <span>
+            TIME:
+            <span class="time">0</span>s
+        </span>
+
+    </div>
+
+
+    <div class="level-title">
+
+        <h2>Clean the Ocean</h2>
+
+        <p>
+            Remove the pollution,
+            but leave nature alone!
+        </p>
+
+    </div>
+
+
+    <!-- CLEAN UP AREA -->
+
+    <div id="oceanBin">
+
+        <div class="recycle-symbol">
+            ♻
+        </div>
+
+        <span>CLEAN UP</span>
+
+    </div>
+
+
+    <!-- POLLUTION -->
+
+    <img src="images/rubber_duck.png"
+         class="ocean-object pollution"
+         data-type="pollution"
+         alt="Rubber duck">
+
+
+    <img src="images/beach_ball.png"
+         class="ocean-object pollution"
+         data-type="pollution"
+         alt="Beach ball">
+
+
+    <img src="images/sponge.png"
+         class="ocean-object pollution"
+         data-type="pollution"
+         alt="Sponge">
+
+
+    <img src="images/metal_spoon.png"
+         class="ocean-object pollution"
+         data-type="pollution"
+         alt="Metal spoon">
+
+
+    <!-- NATURE -->
+
+    <img id="oceanFish"
+         src="images/fish.png"
+         class="ocean-object nature"
+         data-type="nature"
+         alt="Fish">
+
+
+    <img id="oceanShell"
+         src="images/seashells.png"
+         class="ocean-object nature"
+         data-type="nature"
+         alt="Seashell">
+
+
+    <div class="level-progress">
+
+        OCEAN CLEANED:
+
+        <span id="oceanProgress">
+            0
+        </span>
+
+        / 4
+
+    </div>
+
+
+    <div class="game-message"></div>
+
+</section>
+
+
+
+<!-- ==================================================
+     LEVEL 3
+     RESTORE THE HABITAT
+     ================================================== -->
+
+<section id="level3"
+         class="screen level level3-bg">
+
+
+    <div class="hud">
+
+        <span>LEVEL 3</span>
+
+        <span>
+            ❤️ <span class="lives">3</span>
+        </span>
+
+        <span>
+            SCORE:
+            <span class="score">0</span>
+        </span>
+
+        <span>
+            TIME:
+            <span class="time">0</span>s
+        </span>
+
+    </div>
+
+
+    <div class="level-title">
+
+        <h2>Restore the Habitat</h2>
+
+        <p>
+            Fix the habitat! Drag each healthy item
+            onto the damaged one.
+        </p>
+
+    </div>
+
+
+    <!-- BROKEN TREE -->
+
+    <div id="treeZone"
+         class="repair-zone"
+         data-type="tree">
+
+        <img src="images/broken_tree.png"
+             alt="Broken tree">
+
+    </div>
+
+
+    <!-- DIRTY WATER -->
+
+    <div id="waterZone"
+         class="repair-zone"
+         data-type="water">
+
+        <img src="images/dirty_water.png"
+             alt="Dirty water">
+
+    </div>
+
+
+    <!-- FALLEN NEST -->
+
+    <div id="nestZone"
+         class="repair-zone"
+         data-type="nest">
+
+        <img src="images/fallen_nest.png"
+             alt="Fallen nest">
+
+    </div>
+
+
+    <!-- DRY FLOWERS -->
+
+    <div id="flowerZone"
+         class="repair-zone"
+         data-type="flowers">
+
+        <img src="images/dry_flowers.png"
+             alt="Dry flowers">
+
+    </div>
+
+
+    <!-- HEALTHY ITEMS -->
+
+    <div class="inventory-panel">
+
+        <div class="inventory-title">
+            RESTORE WITH
+        </div>
+
+
+        <div class="inventory-items">
+
+            <img src="images/healthy_tree.png"
+                 class="repair-item"
+                 data-type="tree"
+                 alt="Healthy tree">
+
+
+            <img src="images/clean_water.png"
+                 class="repair-item"
+                 data-type="water"
+                 alt="Clean water">
+
+
+            <img src="images/healthy_nest.png"
+                 class="repair-item"
+                 data-type="nest"
+                 alt="Healthy nest">
+
+
+            <img src="images/healthy_flowers.png"
+                 class="repair-item"
+                 data-type="flowers"
+                 alt="Healthy flowers">
+
+        </div>
+
+    </div>
+
+
+    <div class="game-message"></div>
+
+</section>
+
+
+
+<!-- ==================================================
+     LEVEL 4
+     BUILD A GREEN CITY
+     ================================================== -->
+
+<section id="level4"
+         class="screen level level4-bg">
+
+
+    <div class="hud">
+
+        <span>LEVEL 4</span>
+
+        <span>
+            ❤️ <span class="lives">3</span>
+        </span>
+
+        <span>
+            SCORE:
+            <span class="score">0</span>
+        </span>
+
+        <span>
+            TIME:
+            <span class="time">0</span>s
+        </span>
+
+    </div>
+
+
+    <div class="level-title">
+
+        <h2>Build a Green City</h2>
+
+        <p>
+            Drag each green solution
+            to the correct place.
+        </p>
+
+    </div>
+
+
+    <!-- TREE -->
+
+    <div id="treeCityZone"
+         class="city-zone"
+         data-type="tree">
+
+        <span>TREE</span>
+
+    </div>
+
+
+    <!-- GARDEN -->
+
+    <div id="gardenCityZone"
+         class="city-zone"
+         data-type="garden">
+
+        <span>GARDEN</span>
+
+    </div>
+
+
+    <!-- SOLAR HOME -->
+
+    <div id="solarCityZone"
+         class="city-zone"
+         data-type="solar">
+
+        <span>SOLAR HOME</span>
+
+    </div>
+
+
+    <!-- BIKE LANE -->
+
+    <div id="bikeCityZone"
+         class="city-zone"
+         data-type="bike">
+
+        <span>BIKE LANE</span>
+
+    </div>
+
+
+    <!-- ROAD -->
+
+    <div id="busCityZone"
+         class="city-zone"
+         data-type="bus">
+
+        <span>ROAD</span>
+
+    </div>
+
+
+    <!-- RECYCLING -->
+
+    <div id="recyclingCityZone"
+         class="city-zone"
+         data-type="recycling">
+
+        <span>RECYCLING</span>
+
+    </div>
+
+
+    <!-- CITY ITEMS -->
+
+    <div class="city-inventory">
+
+        <div class="inventory-title">
+            BUILD WITH
+        </div>
+
+
+        <div class="city-items">
+
+            <img src="images/tree.png"
+                 class="city-item"
+                 data-type="tree"
+                 alt="Tree">
+
+
+            <img src="images/green_garden.png"
+                 class="city-item"
+                 data-type="garden"
+                 alt="Green garden">
+
+
+            <img src="images/solar_house.png"
+                 class="city-item"
+                 data-type="solar"
+                 alt="Solar house">
+
+
+            <img src="images/bicycle.png"
+                 class="city-item"
+                 data-type="bike"
+                 alt="Bicycle">
+
+
+            <img src="images/electric_bus.png"
+                 class="city-item"
+                 data-type="bus"
+                 alt="Electric bus">
+
+
+            <img src="images/recycling_bins.png"
+                 class="city-item"
+                 data-type="recycling"
+                 alt="Recycling bins">
+
+        </div>
+
+    </div>
+
+
+    <div class="game-message"></div>
+
+</section>
+
+
+
+<!-- ==================================================
+     RESULTS
+     ================================================== -->
+
+<section id="resultsScreen"
+         class="screen">
+
+
+    <div class="results-box">
+
+        <h1>WORLD SAVED!</h1>
+
+
+        <h2>
+            WELL DONE,
+            <span id="resultName"></span>!
+        </h2>
+
+
+        <div class="result-avatar-box">
+
+            <img id="resultAvatar"
+                 src=""
+                 alt="Player avatar">
+
+        </div>
+
+
+        <div id="trophy"
+             class="trophy">
+
+            🏆
+
+        </div>
+
+
+        <h2 id="trophyTitle">
+            ECOQUEST CHAMPION
+        </h2>
+
+
+        <div class="result-stats">
+
+
+            <div class="result-stat">
+
+                <span class="stat-icon">
+                    ⭐
+                </span>
+
+                <span class="stat-title">
+                    SCORE
+                </span>
+
+                <span id="finalScore"
+                      class="stat-number">
+
+                    0
+
+                </span>
+
+            </div>
+
+
+            <div class="result-stat">
+
+                <span class="stat-icon">
+                    ⏱️
+                </span>
+
+                <span class="stat-title">
+                    TIME
+                </span>
+
+                <span id="finalTime"
+                      class="stat-number">
+
+                    0:00
+
+                </span>
+
+            </div>
+
+
+            <div class="result-stat">
+
+                <span class="stat-icon">
+                    🎯
+                </span>
+
+                <span class="stat-title">
+                    MISTAKES
+                </span>
+
+                <span id="finalMistakes"
+                      class="stat-number">
+
+                    0
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <button onclick="restartGame()">
+            PLAY AGAIN
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     AUDIO
+     ================================================== -->
+
+<audio id="startSound"
+       src="sounds/start.mp3">
+</audio>
+
+<audio id="correctSound"
+       src="sounds/correct.mp3">
+</audio>
+
+<audio id="wrongSound"
+       src="sounds/wrong.mp3">
+</audio>
+
+<audio id="levelSound"
+       src="sounds/level_complete.mp3">
+</audio>
+
+<audio id="gameOverSound"
+       src="sounds/game_over.mp3">
+</audio>
+
+<audio id="victorySound"
+       src="sounds/victory.mp3">
+</audio>
+
+
+
+<!-- jQuery -->
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+
+<!-- jQuery UI -->
+
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+
+<!-- My JavaScript -->
+
+<script src="js/game.js"></script>
+
+
+</body>
+
+</html>
